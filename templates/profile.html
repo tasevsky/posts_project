@@ -1,0 +1,227 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: #eee;
+        }
+
+        .card {
+            border: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .card:before {
+
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: rgba(241, 240, 240, 0.01);
+            transform: scaleY(1);
+            transition: all 0.5s;
+            transform-origin: bottom
+        }
+
+        .card:after {
+
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: rgba(52, 39, 39, 0.84);
+            transform: scaleY(0);
+            transition: all 0.5s;
+            transform-origin: bottom
+        }
+
+        .card:hover::after {
+            transform: scaleY(1);
+        }
+
+
+        .fonts {
+            font-size: 11px;
+        }
+
+        .social-list {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .social-list li {
+            padding: 10px;
+            color: rgba(52, 39, 39, 0.84);
+            font-size: 19px;
+        }
+
+
+        .buttons button:nth-child(1) {
+            border: rgba(52, 39, 39, 0.84);
+            color: rgba(52, 39, 39, 0.84);
+            height: 40px;
+        }
+
+        .buttons button:nth-child(1):hover {
+            border: rgba(52, 39, 39, 0.84) !important;
+            color: #fff;
+            height: 40px;
+            background-color: rgba(52, 39, 39, 0.84);
+        }
+
+        .buttons button:nth-child(2) {
+            border: rgba(52, 39, 39, 0.84) !important;
+            background-color: rgba(52, 39, 39, 0.84);
+            color: #fff;
+            height: 40px;
+        }
+
+        @media (min-width: 0) {
+            .g-mr-15 {
+                margin-right: 1.07143rem !important;
+            }
+        }
+
+        @media (min-width: 0) {
+            .g-mt-3 {
+                margin-top: 0.21429rem !important;
+            }
+        }
+
+        .g-height-50 {
+            height: 50px;
+        }
+
+        .g-width-50 {
+            width: 50px !important;
+        }
+
+        @media (min-width: 0) {
+            .g-pa-30 {
+                padding: 2.14286rem !important;
+            }
+        }
+
+        .g-bg-secondary {
+            background-color: #fafafa !important;
+        }
+
+        .u-shadow-v18 {
+            box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+        }
+
+        .g-color-gray-dark-v4 {
+            color: #777 !important;
+        }
+
+        .g-font-size-12 {
+            font-size: 0.85714rem !important;
+        }
+
+        .media-comment {
+            margin-top: 20px
+        }
+    </style>
+</head>
+<div class="container">
+    <nav class="navbar fixed-top navbar-expand-sm bg-light navbar-light navbar-inverse">
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'posts' %}">Homepage</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blockedusers' %}">Blocked Users</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="row d-flex justify-content-center mt-5" style="margin-top: 70px !important;">
+        <div class="col-md-7">
+            <div class="card p-3 py-4">
+                <div class="text-center">
+                    <img src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png" width="100"
+                         class="rounded-circle">
+                </div>
+                <div class="text-center mt-3">
+                    <span class="bg-secondary p-1 px-4 rounded text-white">Change profile picture</span>
+                    <h5 class="mt-2 mb-0">{{ user.myUserBase.username }}</h5>
+                    <span>I have a nice profession</span>
+
+                    <div class="px-4 mt-1">
+                        <p class="fonts">This is a very nice text where I say what all my interests are and I am very
+                            happy to share this with you. </p>
+                    </div>
+                    <ul class="social-list">
+                        <li><i class="fa fa-facebook"></i></li>
+                        <li><i class="fa fa-dribbble"></i></li>
+                        <li><i class="fa fa-instagram"></i></li>
+                        <li><i class="fa fa-linkedin"></i></li>
+                        <li><i class="fa fa-google"></i></li>
+                    </ul>
+                    <div class="buttons">
+                        <button class="btn btn-outline-primary px-4">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mt-5"><p class="h1">Posts:</p></div>
+        {% for post in posts %}
+            <div class="col-md-8">
+                <div class="media g-mb-30 media-comment">
+                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                        <div class="g-mb-15">
+                            <div class="d-flex mr-3">
+                            </div>
+                            <h5 class="h5 g-color-gray-dark-v1 mb-0">{{ post.author }}</h5>
+                            <span class="g-color-gray-dark-v4 g-font-size-12"> Posted created on: {{ post.created }}</span>
+                        </div>
+
+                        <p> {{ post.content }}</p>
+
+                        <ul class="list-inline d-sm-flex my-0">
+                            <li class="list-inline-item g-mr-20">
+                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                    Last modified:
+                                    {{ post.last_modified }}
+                                </a>
+                            </li>
+                            <li class="list-inline-item ml-auto">
+                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                    <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                    Comment
+                                </a>
+                            </li>
+                        </ul>
+
+                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                            View comments:
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+</div>
